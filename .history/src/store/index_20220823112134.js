@@ -3,23 +3,18 @@ import { createStore } from "vuex";
 const store = createStore({
   state: {
     calculations: [
-      { firstNumber: 0, operator: "+", secondNumber: 0, answer: 0 },
+      { firstNumber: 0, operator: "+", secondNumber: 0, answer: [] },
     ],
-    calcHistory: [0],
   },
   getters: {
     lastAnswer: (state) => {
-      return state.calculations[state.calculations.length - 1].answer;
-    },
-    calcHistory: (state) => {
-      return state.calcHistory;
+      console.log(state.calculations.answer);
+      // return state.calculations[state.calculations.length - 1].answer;
     },
   },
   mutations: {
     PUSH_TO_LOG(state, calculation) {
       state.calculations.push(calculation);
-      state.calcHistory.push(calculation.answer);
-      console.log(state.calcHistory);
     },
   },
   actions: {

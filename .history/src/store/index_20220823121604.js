@@ -5,10 +5,11 @@ const store = createStore({
     calculations: [
       { firstNumber: 0, operator: "+", secondNumber: 0, answer: 0 },
     ],
-    calcHistory: [0],
+    calcHistory: [],
   },
   getters: {
     lastAnswer: (state) => {
+      console.log(state.calculations.answer);
       return state.calculations[state.calculations.length - 1].answer;
     },
     calcHistory: (state) => {

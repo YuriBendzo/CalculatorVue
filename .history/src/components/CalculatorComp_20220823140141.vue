@@ -10,10 +10,16 @@
         >
           C
         </button>
-        <button class="calculator__btn function-button" @click="this.undo">
+        <button
+          class="calculator__btn function-button"
+          @click="this.undo"
+        >
           undo
         </button>
-        <button class="calculator__btn function-button" @click="this.repo">
+        <button
+          class="calculator__btn function-button"
+          @click="this.repo"
+        >
           repo
         </button>
         <!-- <button class="calculator__btn function-button" @click="backspace">
@@ -214,29 +220,26 @@ export default {
         });
     },
     undo() {
-      if (this.count === 0) {
-        this.count = -2;
-      } else {
-        this.count--;
-      }
+      console.log(this.calcHistory);
+      this.count--;
       if (this.calcHistory.length + this.count >= 0) {
         this.displayValue =
           this.calcHistory[this.calcHistory.length + this.count];
         console.log(this.displayValue);
-      }
-      if (this.calcHistory.length + this.count < 0) {
-        this.count++;
+      } else {
+        this.displayValue = 0;
       }
     },
     repo() {
       this.count++;
-      if (this.calcHistory.length + this.count < this.calcHistory.length) {
+      if (this.calcHistory.length + this.count <= 0) {
         this.displayValue =
           this.calcHistory[this.calcHistory.length + this.count];
+        console.log(this.displayValue);
       } else {
-        this.count--;
+        this.displayValue = 0;
       }
-    },
+    }
   },
 };
 </script>

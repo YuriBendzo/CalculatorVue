@@ -5,7 +5,7 @@ const store = createStore({
     calculations: [
       { firstNumber: 0, operator: "+", secondNumber: 0, answer: 0 },
     ],
-    calcHistory: [0],
+    calcHistory: [],
   },
   getters: {
     lastAnswer: (state) => {
@@ -19,7 +19,7 @@ const store = createStore({
     PUSH_TO_LOG(state, calculation) {
       state.calculations.push(calculation);
       state.calcHistory.push(calculation.answer);
-      console.log(state.calcHistory);
+      // console.log(state.calcHistory);
     },
   },
   actions: {

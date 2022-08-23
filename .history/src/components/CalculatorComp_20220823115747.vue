@@ -10,15 +10,15 @@
         >
           C
         </button>
-        <button class="calculator__btn function-button" @click="this.undo">
+        <button
+          class="calculator__btn function-button"
+          @click="this.useLastAnswer"
+        >
           undo
         </button>
-        <button class="calculator__btn function-button" @click="this.repo">
-          repo
-        </button>
-        <!-- <button class="calculator__btn function-button" @click="backspace">
+        <button class="calculator__btn function-button" @click="backspace">
           back
-        </button> -->
+        </button>
         <button
           class="calculator__btn operation-button"
           :class="{ 'operation-button-selected': operator === '+' }"
@@ -104,17 +104,15 @@ export default {
   name: "CalculatorComp",
   data() {
     return {
-      displayValue: 0,
+      displayValue: "0",
       operator: null,
       firstNumber: 0,
       secondNumber: 0,
       clearDisplayNext: false,
-      count: 0,
     };
   },
   computed: {
-    ...mapGetters(["calcHistory"]),
-
+    ...mapGetters ([])
     calculations() {
       return this.$store.state.calculations;
     },
@@ -213,29 +211,8 @@ export default {
           this.clearDisplayNext = true;
         });
     },
-    undo() {
-      if (this.count === 0) {
-        this.count = -2;
-      } else {
-        this.count--;
-      }
-      if (this.calcHistory.length + this.count >= 0) {
-        this.displayValue =
-          this.calcHistory[this.calcHistory.length + this.count];
-        console.log(this.displayValue);
-      }
-      if (this.calcHistory.length + this.count < 0) {
-        this.count++;
-      }
-    },
-    repo() {
-      this.count++;
-      if (this.calcHistory.length + this.count < this.calcHistory.length) {
-        this.displayValue =
-          this.calcHistory[this.calcHistory.length + this.count];
-      } else {
-        this.count--;
-      }
+    useLastAnswer() {
+      this.displayValue = this.lastAnswer;
     },
   },
 };

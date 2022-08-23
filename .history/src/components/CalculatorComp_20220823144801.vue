@@ -214,11 +214,8 @@ export default {
         });
     },
     undo() {
-      if (this.count === 0) {
-        this.count = -2;
-      } else {
-        this.count--;
-      }
+      console.log(this.calcHistory);
+      this.count--;
       if (this.calcHistory.length + this.count >= 0) {
         this.displayValue =
           this.calcHistory[this.calcHistory.length + this.count];
@@ -227,14 +224,21 @@ export default {
       if (this.calcHistory.length + this.count < 0) {
         this.count++;
       }
+      // } else if (this.calcHistory.length + this.count){
+      //   this.displayValue = 0;
+      //   // this.count = 0;
+      // }
     },
     repo() {
       this.count++;
-      if (this.calcHistory.length + this.count < this.calcHistory.length) {
+      console.log(this.count);
+      if (this.calcHistory.length + this.count <= this.calcHistory.length) {
         this.displayValue =
           this.calcHistory[this.calcHistory.length + this.count];
-      } else {
+        console.log(this.displayValue);
+      } else if (this.count > 0) {
         this.count--;
+        this.displayValue = this.calcHistory[this.calcHistory.length - 1];
       }
     },
   },

@@ -5,21 +5,16 @@ const store = createStore({
     calculations: [
       { firstNumber: 0, operator: "+", secondNumber: 0, answer: 0 },
     ],
-    calcHistory: [0],
   },
   getters: {
     lastAnswer: (state) => {
+      console.log(state.calculations.answer);
       return state.calculations[state.calculations.length - 1].answer;
-    },
-    calcHistory: (state) => {
-      return state.calcHistory;
     },
   },
   mutations: {
     PUSH_TO_LOG(state, calculation) {
       state.calculations.push(calculation);
-      state.calcHistory.push(calculation.answer);
-      console.log(state.calcHistory);
     },
   },
   actions: {

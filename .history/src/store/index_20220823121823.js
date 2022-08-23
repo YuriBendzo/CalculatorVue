@@ -5,7 +5,7 @@ const store = createStore({
     calculations: [
       { firstNumber: 0, operator: "+", secondNumber: 0, answer: 0 },
     ],
-    calcHistory: [0],
+    calcHistory: [],
   },
   getters: {
     lastAnswer: (state) => {

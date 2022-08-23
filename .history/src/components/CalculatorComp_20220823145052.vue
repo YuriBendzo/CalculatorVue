@@ -214,11 +214,7 @@ export default {
         });
     },
     undo() {
-      if (this.count === 0) {
-        this.count = -2;
-      } else {
-        this.count--;
-      }
+      this.count--;
       if (this.calcHistory.length + this.count >= 0) {
         this.displayValue =
           this.calcHistory[this.calcHistory.length + this.count];
